@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Lab 8</title>
+	</head>
+	
+	<body>
+		<style>
+			
+		</style>
+		
+		<div id="info"></div>
+        
+        <input type="button" value="Load it!" id="loadButton"/>
+		
+		<script>
+			var apiBase="http://api.open-notify.org/iss-now.json";
+			var data;
+			
+			var info = document.getElementById("info");
+            var button = document.getElementById("loadButton");
+            
+            //Set up xhr
+            var xhr = new XMLHttpRequest();
+            
+            //Set the button listener
+            button.addEventListener("click",buttonPressed);
+            
+            function buttonPressed() {
+                //Tell it what to do when it's loaded
+                xhr.addEventListener("load",loadData);
+                //Tell it the file to load
+                xhr.open("GET", apiBase);
+                //GO!
+                xhr.send();
+            }
+			
+			//parse and display data
+			function loadData() {
+				data=JSON.parse(xhr.responseText);
+				
+				info.innerHTML = data.timestamp + " " + data.message + 
+				" " + data.iss_position.latitude + " " + data.iss_position.longitude;
+                
+                console.log("Loaded!");
+				
+				//data.timestamp
+				//data.message-box
+				//data.iss_position.latitude
+				//data.iss_position.longitude
+			}
+			
+		</script>
+	</body>
+</html>
