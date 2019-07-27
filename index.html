@@ -9,8 +9,11 @@
 			
 		</style>
 		
-		<div id="info"></div>
-        
+		<div id="timestamp"></div>
+		<div id="message"></div>
+        <div id="latitude"></div>
+		<div id="longitude"></div>
+		
         <input type="button" value="Load it!" id="loadButton"/>
 		
 		<script>
@@ -39,8 +42,11 @@
 			function loadData() {
 				data=JSON.parse(xhr.responseText);
 				
-				info.innerHTML = data.timestamp + " " + data.message + 
-				" " + data.iss_position.latitude + " " + data.iss_position.longitude;
+				//add data into separate divs
+				timestamp.innerHTML = data.timestamp;
+				message.innerHTML=data.data.message;
+				latitude.innerHTML=data.iss_position.latitude;
+				longitude.innerHTML=data.iss_position.longitude;
                 
                 console.log("Loaded!");
 				
