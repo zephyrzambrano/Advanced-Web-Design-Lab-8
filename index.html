@@ -15,9 +15,11 @@
         <div id="latitude"></div>
 		<div id="longitude"></div>
 		
-        <input type="button" value="Load it!" id="loadButton"/>
+        <!--<input type="button" value="Load it!" id="loadButton"/>-->
 		
 		<script>
+		
+			window.setInterval(buttonPressed, 1000);
 			var apiBase="http://api.open-notify.org/iss-now.json";
 			var data;
 			
@@ -41,6 +43,8 @@
 			
 			//parse and display data
 			function loadData() {
+			
+			
 				data=JSON.parse(xhr.responseText);
 				
 				//all the data in one div
@@ -48,7 +52,7 @@
 				" " + data.iss_position.latitude + " " + data.iss_position.longitude;
 				
 				//data in separate divs
-				timestamp.innerHTML = data.timestamp;
+				timestamp.innerHTML=data.timestamp;
 				message.innerHTML=data.data.message;
 				latitude.innerHTML=data.iss_position.latitude;
 				longitude.innerHTML=data.iss_position.longitude;
