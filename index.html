@@ -3,10 +3,41 @@
 	<head>
 		<title>Lab 8</title>
 	</head>
-	
+    
+    <canvas id="canvas" width=100% height=100%;>
+        Upgrade your browser to see the canvas!
+    </canvas>
+    
 	<body>
 		<style>
-			
+            
+            body {
+                background-image: url(worldmap.jpeg);
+                background-color: #cccccc;
+                background-repeat: no-repeat;
+                background-size: 100%;               
+            }
+            
+            #timestamp {
+                color: red;
+            }
+            
+            #message {
+                color: red;
+            }
+            
+            #latitude {
+                color: red;
+            }
+            
+            #longitude {
+                color: red;
+            }
+            
+            canvas {
+                border: 5px solid red;
+            }
+            
 		</style>
 		
 		<div id="info"></div>
@@ -15,24 +46,30 @@
         <div id="latitude"></div>
 		<div id="longitude"></div>
 		
-        <!--<input type="button" value="Load it!" id="loadButton"/>-->
-		
 		<script>
-		
-			window.setInterval(buttonPressed, 1000);
+            //map image
+            //https://images.pexels.com/photos/87652/earth-map-summer-july-87652.jpeg?cs=srgb&dl=earth-geography-map-87652.jpg&fm=jpg
+            
+            
+			window.setInterval(refresh, 1000);
 			var apiBase="http://api.open-notify.org/iss-now.json";
 			var data;
+            
+            var time;
 			
-			var info = document.getElementById("info");
-            var button = document.getElementById("loadButton");
+			//var info=document.getElementById("info");
+            var timestamp=document.getElementById("timestamp");
+            var message=document.getElementById("message");
+            var latitude=document.getElementById("latitude");
+            var longitude=document.getElementById("longitude");
             
             //Set up xhr
             var xhr = new XMLHttpRequest();
             
             //Set the button listener
-            button.addEventListener("click",buttonPressed);
+            //button.addEventListener("click", refresh);
             
-            function buttonPressed() {
+            function refresh() {
                 //Tell it what to do when it's loaded
                 xhr.addEventListener("load",loadData);
                 //Tell it the file to load
@@ -48,12 +85,16 @@
 				data=JSON.parse(xhr.responseText);
 				
 				//all the data in one div
-				info.innerHTML = data.timestamp + " " + data.message + 
-				" " + data.iss_position.latitude + " " + data.iss_position.longitude;
+				//info.innerHTML = data.timestamp.getTime() + " " + data.message + 
+				//" " + data.iss_position.latitude + " " + data.iss_position.longitude;
 				
+                //time=new Date(data.timestamp);
+                
 				//data in separate divs
-				timestamp.innerHTML=data.timestamp;
-				message.innerHTML=data.data.message;
+				//timestamp.innerHTML=time;
+                
+                timestamp.innerHTML=data.timestamp;
+				message.innerHTML=data.message;
 				latitude.innerHTML=data.iss_position.latitude;
 				longitude.innerHTML=data.iss_position.longitude;
                 
