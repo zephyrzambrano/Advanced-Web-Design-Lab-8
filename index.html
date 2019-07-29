@@ -32,11 +32,11 @@
             
 		</style>
 		
-		<div id="info"></div>
+		<!--<div id="info"></div>
 		<div id="timestamp"></div>
 		<div id="message"></div>
         <div id="latitude"></div>
-        <div id="longitude"></div>
+        <div id="longitude"></div>-->
 		
 		<script>
             //map image
@@ -92,16 +92,16 @@
 				//all the data in one div
 				//info.innerHTML = data.timestamp.getTime() + " " + data.message + 
 				//" " + data.iss_position.latitude + " " + data.iss_position.longitude;
-				
-                //time=new Date(data.timestamp);
                 
 				//data in separate divs
-				//timestamp.innerHTML=time;
                 
-                timestamp.innerHTML=data.timestamp;
+                /*timestamp.innerHTML=data.timestamp;
 				message.innerHTML=data.message;
 				latitude.innerHTML=data.iss_position.latitude;
-				longitude.innerHTML=data.iss_position.longitude;
+				longitude.innerHTML=data.iss_position.longitude;*/
+                
+                latitude=data.iss_position.latitude;
+				longitude=data.iss_position.longitude;
                 
                 console.log("Loaded!");
 				
