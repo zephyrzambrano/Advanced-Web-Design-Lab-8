@@ -6,6 +6,16 @@
     
 	<body>
         
+        <style>
+            #canvas {
+                margin: auto;
+                display: block;
+                width: 85%;
+                height: 85%;
+                padding-top: 75px;
+            }
+        </style>
+        
         <canvas id="canvas" width="1260" height="630">
             Upgrade your browser to see the HTML5 Canvas!
         </canvas>
@@ -85,9 +95,10 @@
                 console.log("Lat/Long: " +lat + " " + long);
                 console.log("X/Y: " +x + " " + y);
                 
-                var ca=document.getElementById('canvas').getContext('2d');
+                ca=document.getElementById('canvas').getContext('2d');
 				ca.drawImage(img, 0, 0);
                 
+                c.beginPath();
                 c.fillStyle="red";
                 c.arc(x, y, 10, 0, 2*Math.PI);
                 c.fill();
