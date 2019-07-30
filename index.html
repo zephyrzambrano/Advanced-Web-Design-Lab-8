@@ -79,11 +79,17 @@
             
             function drawDot (lat, long) {
                 
-                var x=(lon/630 * canvas.width/2)+canvas.width/2;
+                var x=(long/630 * canvas.width/2)+canvas.width/2;
                 var y=-(lat/315 * canvas.height/2)+canvas.height/2;
                 
+                console.log("Lat/Long: " +lat + " " + long);
+                console.log("X/Y: " +x + " " + y);
+                
+                var ca=document.getElementById('canvas').getContext('2d');
+				ca.drawImage(img, 0, 0);
+                
                 c.fillStyle="red";
-                c.arc(x, y, 50, 0, 2*Math.PI);
+                c.arc(x, y, 10, 0, 2*Math.PI);
                 c.fill();
                 
                 c.font="30px Arial";
