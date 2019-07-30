@@ -4,43 +4,18 @@
 		<title>Lab 8</title>
 	</head>
     
-    <canvas id="canvas" width="1260" height="630">
-        Upgrade your browser to see the HTML5 Canvas!
-    </canvas>
-    
 	<body>
-		<style>
-            #canvas {
-                width: 100%;
-            }
-            
-            #timestamp {
-                color: red;
-            }
-            
-            #message {
-                color: red;
-            }
-            
-            #latitude {
-                color: red;
-            }
-            
-            #longitude {
-                color: red;
-            }
-            
-		</style>
-		
-		<!--<div id="info"></div>
-		<div id="timestamp"></div>
-		<div id="message"></div>
-        <div id="latitude"></div>
-        <div id="longitude"></div>-->
+        
+        <canvas id="canvas" width="1260" height="630">
+            Upgrade your browser to see the HTML5 Canvas!
+        </canvas>
 		
 		<script>
             //map image
             //https://images.pexels.com/photos/87652/earth-map-summer-july-87652.jpeg?cs=srgb&dl=earth-geography-map-87652.jpg&fm=jpg
+            
+            //lat/long reference:
+            //http://www.satsig.net/lat_long.htm
             
             var canvas=document.getElementById("canvas");
             c=canvas.getContext("2d");
@@ -59,8 +34,6 @@
 			window.setInterval(refresh, 1000);
 			var apiBase="http://api.open-notify.org/iss-now.json";
 			var data;
-            
-            var time;
 			
 			//var info=document.getElementById("info");
             var timestamp=document.getElementById("timestamp");
@@ -85,31 +58,38 @@
 			
 			//parse and display data
 			function loadData() {
-			
+                
+                //accessing api data:
+                //data.timestamp
+				//data.message-box
+				//data.iss_position.latitude
+				//data.iss_position.longitude
 			
 				data=JSON.parse(xhr.responseText);
 				
-				//all the data in one div
-				//info.innerHTML = data.timestamp.getTime() + " " + data.message + 
-				//" " + data.iss_position.latitude + " " + data.iss_position.longitude;
-                
-				//data in separate divs
-                
-                /*timestamp.innerHTML=data.timestamp;
-				message.innerHTML=data.message;
-				latitude.innerHTML=data.iss_position.latitude;
-				longitude.innerHTML=data.iss_position.longitude;*/
                 
                 latitude=data.iss_position.latitude;
 				longitude=data.iss_position.longitude;
                 
+                drawDot(latitude, longitude);
+                
                 console.log("Loaded!");
 				
-				//data.timestamp
-				//data.message-box
-				//data.iss_position.latitude
-				//data.iss_position.longitude
 			}
+            
+            function drawDot (lat, long) {
+                
+                var x=(lon/630 * canvas.width/2)+canvas.width/2;
+                var y=-(lat/315 * canvas.height/2)+canvas.height/2;
+                
+                c.fillStyle="red";
+                c.arc(x, y, 50, 0, 2*Math.PI);
+                c.fill();
+                
+                c.font="30px Arial";
+                c.fillText(longitude, canvas.width/2, 600);
+                c.fillText(latitude, canvas.width/2, 615);
+            }
 			
 		</script>
 	</body>
