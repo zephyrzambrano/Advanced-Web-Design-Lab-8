@@ -6,14 +6,13 @@
     
 	<body>
         <h1>International Space Station</h1>
-        <p>Coordinates and location displayed on a map simply through an API that updates it's location constantly.</p>
+        <p>Coordinates and location displayed on a map simply through an API that updates its location constantly.</p>
         <style>
             #canvas {
                 margin: auto;
                 display: block;
                 width: 85%;
                 height: 85%;
-                padding-top: 75px;
             }
             table, th, td {
             border: 1px solid black;
@@ -113,8 +112,8 @@
                 c.fill();
                 
                 c.font="30px Arial";
-                c.fillText(longitude, canvas.width/2, 600);
-                c.fillText(latitude, canvas.width/2, 615);
+                c.fillText("Longitude: "+longitude, x-150, y+50);
+                c.fillText("Latitude: "+latitude, x-150, y+80);
             }
 			
 		</script>
