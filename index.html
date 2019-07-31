@@ -6,8 +6,9 @@
     
 	<body>
         <h1>International Space Station</h1>
-        <p>Coordinates and location displayed on a map simply through an API that updates its location constantly.</p>
+        <p id="subheading">Coordinates and location displayed on a map simply through an API that updates its location constantly.</p>
         <style>
+            
             #canvas {
                 margin: auto;
                 display: block;
@@ -20,7 +21,28 @@
             }
             th, td {
                 padding: 5px;
-                text-align: left;    
+                text-align: left;
+                font-size: 20px;
+            }
+            
+            h1 {
+                text-align: center;
+                font-size: 40px;
+            }
+            
+            p {
+                font-size: 20px;
+            }
+            
+            #subheading {
+                text-align: center;
+            }
+            
+             body {
+                background-color: antiquewhite;
+            }
+            #moreInfo {
+                font-style: italic;
             }
         </style>
         
@@ -29,7 +51,7 @@
         </canvas>
 		
 		<script>
-            //map image
+            //map source:
             //https://images.pexels.com/photos/87652/earth-map-summer-july-87652.jpeg?cs=srgb&dl=earth-geography-map-87652.jpg&fm=jpg
             
             //lat/long reference:
@@ -112,12 +134,14 @@
                 c.fill();
                 
                 c.font="30px Arial";
-                c.fillText("Longitude: "+longitude, x-150, y+50);
-                c.fillText("Latitude: "+latitude, x-150, y+80);
+                c.fillText("Longitude: "+longitude, x-140, y+50);
+                c.fillText("Latitude: "+latitude, x-127, y+80);
             }
 			
 		</script>
-        <p>The International Space Station (ISS) is a space station (habitable artificial satellite) in low Earth orbit. The ISS programme is a joint project between five participating space agencies: NASA (United States), Roscosmos (Russia), JAXA (Japan), ESA (Europe), and CSA (Canada).The ownership and use of the space station is established by intergovernmental treaties and agreements. </p> 
+    
+        <p>The International Space Station (ISS) is a space station (habitable artificial satellite) in low Earth orbit. The ISS programme is a joint project between five participating space agencies: NASA (United States), Roscosmos (Russia), JAXA (Japan), ESA (Europe), and CSA (Canada).The ownership and use of the space station is established by intergovernmental treaties and agreements. </p>
+        
         <table style="width:100%">
   <tr>
     <th colspan="2">Additional Information </th>
@@ -144,5 +168,6 @@
   </tr>            
 </table>
         <!--Source:Wikipedia !--> 
+        <p>Source: <a href="https://en.wikipedia.org/wiki/International_Space_Station">Wikipedia</a></p>
 	</body>
 </html>
